@@ -1,0 +1,47 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext {
+        buildToolsVersion = "29.0.3"
+        minSdkVersion = 21
+        compileSdkVersion = 29
+        targetSdkVersion = 29
+        ndkVersion = "20.1.5948944"
+    }
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:4.1.0")
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url("$rootDir/../node_modules/react-native/android")
+        }
+        maven {
+            // Android JSC is installed from npm
+            url("$rootDir/../node_modules/jsc-android/dist")
+        }
+
+        google()
+        jcenter()
+        maven { url 'https://www.jitpack.io' }
+    }
+}
+
+project.ext.vectoricons = [
+        iconFontNames: ['MaterialCommunityIcons.ttf','AntDesign.ttf','Entypo.ttf','Evillcons.ttf',
+        'Feather.ttf','FontAwsome.ttf','FontAwsome5_Brands.ttf','FontAwsome5_Regular.ttf',
+        'FontAwsome5_Solid.ttf','Fontisto.ttf','Foundation.ttf','Ionicons.ttf','MaterialIcons.ttf',
+        'Octicons.ttf','SimpleLineIcons.ttf','Zocial.ttf'] //name of all the fonts added from node_modules in step 1.
+]
+
+//apply from: '../../node_modules/react-native-vector-icons/fonts.gradle'
